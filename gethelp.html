@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get Help | Panther</title>
+    <style>
+        h1 {
+            font-size: 2.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background: url('2.jpg') no-repeat center/cover;
+            color: black;
+            text-align: center;
+            padding: 50px 20px;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.85);
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+            max-width: 800px;
+            margin: auto;
+        }
+
+        h1, h2, h3 {
+            color: black;
+            font-weight: bold;
+        }
+
+        p {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            color: black;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid black;
+            border-radius: 8px;
+            font-size: 1rem;
+            color: black;
+        }
+
+        textarea {
+            height: 100px;
+            resize: none;
+            overflow-y: auto;
+        }
+
+        .submit-button {
+            background: #9c6b46;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 20px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .submit-button:hover {
+            background: #714D33;
+            transform: scale(1.05);
+        }
+
+        .faq-section {
+            margin-top: 40px;
+            text-align: left;
+        }
+
+        .faq {
+            background: rgba(255, 255, 255, 0.85);
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .faq:hover {
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        .faq h3 {
+            font-size: 1.3rem;
+        }
+
+        .faq p {
+            font-size: 1rem;
+            margin-top: 5px;
+            display: none;
+        }
+
+        .success-message {
+            display: none;
+            margin-top: 20px;
+            color: green;
+            font-weight: bold;
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            p {
+                font-size: 1rem;
+            }
+            
+            input, textarea {
+                font-size: 0.9rem;
+            }
+
+            .submit-button {
+                font-size: 1rem;
+            }
+        }
+
+        .get-help-container {
+            max-width: 800px;
+            margin: auto;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .panther-intro {
+            background: #d4d5d7;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
+
+        .panther-intro h3 {
+            color: #333;
+            font-size: 24px;
+        }
+
+        .panther-intro p {
+            color: #555;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Get Help</h1>
+        <div class="get-help-container">
+            <div class="panther-intro">
+                <h3>Panther Knows You Better</h3>
+                <pre>
+    Panther Knows You Better is a smart, AI-powered platform designed to understand you
+like never before. Whether it's analyzing your preferences, predicting your choices,
+or offering personalized recommendations, Panther adapts to your unique needs.
+
+With cutting-edge technology and deep insights, it creates a seamless experience that
+feels intuitive and tailor-made just for you. From lifestyle suggestions to data-driven 
+decisions, Panther ensures that every interaction is smarter, faster, and more relevant.
+
+Experience the future of personalization—because Panther truly knows you better.
+                </pre>
+            </div>
+        </div>
+
+        <p>If you need assistance, feel free to reach out. Fill out the form below, and we’ll get back to you soon!</p>
+
+        <div class="contact-form">
+            <input type="text" id="name" placeholder="Your Name">
+            <input type="email" id="email" placeholder="Your Email">
+            <textarea id="message" placeholder="Your Message"></textarea>
+            <button class="submit-button" onclick="submitForm()">Submit</button>
+            <p class="success-message" id="successMessage">Your message was submitted successfully!</p>
+        </div>
+
+        <div class="faq-section">
+            <h2>Frequently Asked Questions</h2>
+
+            <div class="faq" onclick="toggleFAQ(this)">
+                <h3>What do I do if I’m worried about my mental health?</h3><br>
+                <p>The most important thing is to talk to someone you trust. This might be a friend, colleague, family member, or GP. In addition to talking to someone, it may be useful to find out more information about what you are experiencing.</p>
+            </div>
+
+            <div class="faq" onclick="toggleFAQ(this)">
+                <h3>How can I help a friend struggling with their mental health?</h3><br>
+                <p>Listen without judgment, encourage them to talk about their feelings, and suggest professional help if needed. Let them know they’re not alone.</p>
+            </div>
+
+            <div class="faq" onclick="toggleFAQ(this)">
+                <h3>What do I do if the support doesn’t help?</h3><br>
+                <p>Finding the right help can be challenging since different things work for different people. It's essential to stay open to various approaches, remain persistent in your search, and keep hope alive—even when some solutions don’t work as expected.</p>
+            </div>
+
+            <div class="faq" onclick="toggleFAQ(this)">
+                <h3>How can I manage stress and anxiety effectively?</h3><br>
+                <p>Managing stress requires self-care techniques such as meditation, exercise, maintaining a balanced diet, and ensuring proper sleep. Talking to someone you trust and setting realistic goals can also help in reducing stress.</p>
+            </div>
+
+            <div class="faq" onclick="toggleFAQ(this)">
+                <h3>Where can I find professional mental health support?</h3><br>
+                <p>You can seek help from licensed therapists, counselors, or mental health professionals. Online mental health platforms, helplines, and support groups can also be great resources if you’re unsure where to start.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleFAQ(faqElement) {
+            let answer = faqElement.querySelector("p");
+            answer.style.display = answer.style.display === "block" ? "none" : "block";
+        }
+
+        function submitForm() {
+            let name = document.getElementById("name").value.trim();
+            let email = document.getElementById("email").value.trim();
+            let message = document.getElementById("message").value.trim();
+
+            if (name && email && message) {
+                document.getElementById("successMessage").style.display = "block";
+            }
+        }
+    </script>
+
+</body>
+</html>

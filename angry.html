@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Angry Mood</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+       /* Set full-page background image */
+body {
+    background-image: url('https://i.pinimg.com/736x/17/74/82/177482e4964f15a2fbfd76983417b567.jpg');
+    background-size: cover;
+    background-position: center;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Ensures the body takes up full screen height */
+    font-family: Arial, sans-serif;
+    color: white; /* Default color for the body */
+}
+
+/* Style for the container */
+.container {
+    text-align: center;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgb(0, 0, 0, 0.0); /* Dark shadow for better contrast */
+    background: rgba(0, 0, 0, 0.0); /* Darker background for better readability */
+    width: 80%;
+    max-width: 700px;
+    color: black; /* Text color inside the container */
+    overflow-y: auto; /* Ensures scrolling if the content exceeds the container */
+    max-height: 90vh; /* Prevents container from being too tall */
+}
+
+        h1 {
+            font-size: 38px;
+        }
+
+        h2 {
+            font-size: 28px;
+        }
+
+        p {
+            font-size: 20px;
+            margin: 10px 0;
+        }
+
+        ul {
+            text-align: left;
+            font-size: 20px;
+            margin: 10px 0;
+        }
+
+        /* Button styling */
+        button {
+            padding: 10px 20px;
+            margin: 5px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        #yesButton {
+            background-color: #4CAF50; /* Green */
+            color: white;
+        }
+
+        #noButton {
+            background-color: #f44336; /* Red */
+            color: white;
+        }
+
+        #feedbackMessage {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        /* Breathing exercise styling */
+        #breathingExercise button {
+            background-color: #4CAF50;
+        }
+
+        /* Mood tracker styling */
+        #moodTracker select {
+            padding: 8px;
+            font-size: 20px;
+        }
+
+        /* YouTube Video Embed styling */
+        #youtubeVideoEmbed {
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        /* Style for each section box */
+        #signsOfAnger, #angerManagement, #breathingExercise, #moodTracker, #videoSection {
+            border: 2px solid #fff; /* White border */
+            padding: 15px;
+            box-shadow:  0 0 0px rgba(0, 0, 0, 0.1); /* Very light shadow */
+            background: rgba(0, 0, 0, 0.1); /* Transparent background for readability */
+            margin-bottom: 20px;
+            border-radius: 10px; /* Slightly rounded corners for a better look */
+        }
+
+        /* Initially hide the breathing exercise and video sections */
+        #breathingExercise, #videoSection {
+            display: none;
+            border: 3px solid #fff;  /* Square border */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>You're Feeling Angry 😠</h1>
+
+        <!-- Emotional and Physical Signs of Anger -->
+        <div id="signsOfAnger">
+            <h2>Signs of Anger</h2>
+            <p>Recognizing the signs of anger can help you manage it better:</p>
+            <ul>
+                <li><strong>Emotional Signs:</strong> Irritability, frustration, anxiety, or feeling overwhelmed.</li>
+                <li><strong>Physical Signs:</strong> Increased heart rate, clenched fists, sweating, or tension in your body.</li>
+            </ul>
+        </div>
+
+        <!-- Techniques to Manage Anger -->
+        <div id="angerManagement">
+            <h2>Techniques to Manage Anger</h2>
+            <p>Here are some ways to manage anger:</p>
+            <ul>
+                <li>Take deep breaths and count to 10 before reacting.</li>
+                <li>Go for a walk or engage in physical activity to release tension.</li>
+                <li>Write down your feelings in a journal to process them.</li>
+                <li>Practice mindfulness or meditation to calm your mind.</li>
+                <li>Use positive self-talk to reframe your thoughts.</li>
+                <li>Seek support from a friend or therapist.</li>
+            </ul>
+        </div>
+
+        <!-- Feedback Section -->
+        <div id="feedback">
+            <p>Did these suggestions help?</p>
+            <button id="yesButton">Yes</button>
+            <button id="noButton">No</button>
+            <p id="feedbackMessage"></p>
+        </div>
+
+        <!-- Breathing Exercise (Initially Hidden) -->
+        <div id="breathingExercise">
+            <h2>Breathing Exercise</h2>
+            <p>Try a breathing exercise to calm down:</p>
+            <button id="startBreathing">Start Breathing Exercise</button>
+            <p id="breathingInstructions"></p>
+        </div>
+
+        <!-- YouTube Video Embed (Initially Hidden) -->
+        <div id="videoSection">
+            <h2>Watch this Calming Video</h2>
+            <p>Relax by watching this calming video:</p>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/LlJwjeuBlYE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+
+        <!-- Mood Tracker -->
+        <div id="moodTracker">
+            <h2>Mood Tracker</h2>
+            <p>Track your mood over time:</p>
+            <select id="moodSelector">
+                <option value="happy">😊 Happy</option>
+                <option value="angry">😠 Angry</option>
+                <option value="sad">😢 Sad</option>
+                <option value="calm">😌 Calm</option>
+            </select>
+            <button id="trackMood">Track My Mood</button>
+            <p id="moodTrackerMessage"></p>
+        </div>
+
+        <!-- Navigation -->
+        <a href="nextpage.html" style="color: white; text-decoration: underline;">Back to Moods</a>
+    </div>
+
+    <script>
+        // Feedback Buttons
+        document.getElementById('yesButton').addEventListener('click', function() {
+            document.getElementById('feedbackMessage').textContent = "We are glad!";
+            document.getElementById('breathingExercise').style.display = 'none';  // Hide the breathing exercise section
+            document.getElementById('videoSection').style.display = 'none';  // Hide the video section
+        });
+
+        document.getElementById('noButton').addEventListener('click', function() {
+            document.getElementById('feedbackMessage').textContent = "Try the breathing exercise given below.";
+            document.getElementById('breathingExercise').style.display = 'block';  // Show the breathing exercise section
+            document.getElementById('videoSection').style.display = 'block';  // Show the video section
+        });
+        
+        // Breathing Exercise
+document.getElementById('startBreathing').addEventListener('click', function() {
+    const instructions = [
+        "Inhale... 1, 2, 3, 4",   // 4 seconds to inhale
+        "Hold... 1, 2, 3, 4, 5, 6, 7", // 7 seconds to hold
+        "Exhale... 1, 2, 3, 4, 5, 6, 7, 8" // 8 seconds to exhale
+    ];
+
+    let step = 0;
+    const instructionElement = document.getElementById('breathingInstructions');
+    instructionElement.textContent = instructions[step];
+
+    const inhaleDuration = 4000; // 4 seconds for inhale
+    const holdDuration = 7000;  // 7 seconds for hold
+    const exhaleDuration = 8000; // 8 seconds for exhale
+
+    // Function to switch to the next instruction after each phase
+    const nextStep = () => {
+        step++;
+        if (step >= instructions.length) {
+            clearInterval(interval);
+            instructionElement.textContent = "Great job! You've completed the exercise.";
+            return;
+        }
+        instructionElement.textContent = instructions[step];
+    };
+
+    // Timer to switch instructions at the appropriate times
+    let interval = setInterval(() => {
+        if (step === 0) {
+            nextStep();
+        } else if (step === 1) {
+            setTimeout(nextStep, holdDuration); // Wait for 7 seconds to go to exhale step
+        } else if (step === 2) {
+            setTimeout(nextStep, exhaleDuration); // Wait for 8 seconds to end the exercise
+        }
+    }, inhaleDuration);  // First phase runs for 4 seconds
+
+    // The `nextStep` is called when each phase ends, ensuring accurate breathing timings.
+});
+
+        // Mood Tracker
+        document.getElementById('trackMood').addEventListener('click', function() {
+            const selectedMood = document.getElementById('moodSelector').value;
+            const moodMap = {
+                happy: "happy.html",
+                angry: "#", // Stay on the same page
+                sad: "sad.html",
+                calm: "calm.html",
+                stressed: "stressed.html",
+                depressed: "depressed.html"
+            };
+            if (moodMap[selectedMood] !== "#") {
+                window.location.href = moodMap[selectedMood];
+            } else {
+                document.getElementById('moodTrackerMessage').textContent = "You're feeling 😠 Angry today.";
+            }
+        });
+    </script>
+</body>
+</html>

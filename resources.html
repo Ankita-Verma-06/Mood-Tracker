@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wellness Resources Hub</title>
+    <style>
+        :root {
+            --primary: #ffffff;
+            --secondary: #a5639c;
+            --background: #9a9a9a;
+            --card-bg: #7c7c7c;
+            --transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background: var(--background);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 3rem 1rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: #ffffff;
+            margin-bottom: 2.5rem;
+            text-align: center;
+            font-weight: 600;
+            animation: fadeInDown 0.8s ease-out;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            width: 100%;
+            max-width: 1200px;
+        }
+
+        .section-box {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+            animation: slideUp 0.6s ease-out forwards;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        h2 {
+            font-size: 1.3rem;
+            color: #000000;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            transform-origin: left center;
+            transition: transform 0.3s ease;
+        }
+
+        .resource-item {
+            margin-bottom: 1.5rem;
+            padding: 1.25rem;
+            border-radius: 12px;
+            background: #8b8b8b;
+            transition: var(--transition);
+            animation: fadeInRight 0.5s ease-out forwards;
+            opacity: 0;
+            transform: translateX(-10px);
+        }
+
+        .resource-item:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .resource-title {
+            font-weight: 500;
+            color: #000000;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .resource-description {
+            color: #ffffff;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            margin-bottom: 0.75rem;
+        }
+
+        .resource-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--primary);
+            text-decoration: none;
+            padding: 0.5rem 0;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .resource-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s ease;
+        }
+
+        .resource-link:hover::after {
+            width: 100%;
+        }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideUp {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInRight {
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2rem; }
+            .container { grid-template-columns: 1fr; }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <h1>Wellness Resources</h1>
+    <div class="container">
+        <div class="section-box">
+            <h2>🌿 Mindfulness Resources</h2>
+            <div class="resource-item">
+                <div class="resource-title">Headspace Guided Meditation</div>
+                <div class="resource-description">Beginner-friendly meditation sessions with expert guidance</div>
+                <a href="https://www.youtube.com/@Headspace" class="resource-link" target="_blank">Watch on YouTube →</a>
+            </div>
+        </div>
+
+        <div class="section-box">
+            <h2>💪 Motivation Boosters</h2>
+            <div class="resource-item">
+                <div class="resource-title">TED Talks: Daily Motivation</div>
+                <div class="resource-description">Inspiring talks from world-class thinkers and doers</div>
+                <a href="https://www.ted.com/talks" class="resource-link" target="_blank">Watch TED Talks →</a>
+            </div>
+        </div>
+
+        <div class="section-box">
+            <h2>🍏 Healthy Eating</h2>
+            <div class="resource-item">
+                <div class="resource-title">NutritionFacts.org</div>
+                <div class="resource-description">Science-based healthy eating tips and diet advice</div>
+                <a href="https://nutritionfacts.org/" class="resource-link" target="_blank">Explore Nutrition →</a>
+            </div>
+        </div>
+
+        <div class="section-box">
+            <h2>🧘‍♂️ Fitness & Yoga</h2>
+            <div class="resource-item">
+                <div class="resource-title">Yoga with Adriene</div>
+                <div class="resource-description">Easy-to-follow yoga sessions for beginners and advanced practitioners</div>
+                <a href="https://www.youtube.com/@yogawithadriene" class="resource-link" target="_blank">Watch Yoga Videos →</a>
+            </div>
+        </div>
+
+        <div class="section-box">
+            <h2>📖 Mental Health & Self-care</h2>
+            <div class="resource-item">
+                <div class="resource-title">The Science of Well-Being - Yale</div>
+                <div class="resource-description">A free course on happiness and self-care</div>
+                <a href="https://www.coursera.org/learn/the-science-of-well-being" class="resource-link" target="_blank">Enroll for Free →</a>
+            </div>
+        </div>
+
+        <div class="section-box">
+            <h2>🎧 Relaxing Music & Sleep Aids</h2>
+            <div class="resource-item">
+                <div class="resource-title">Calm Music for Sleep</div>
+                <div class="resource-description">Relaxing soundscapes to improve sleep quality</div>
+                <a href="https://www.youtube.com/@Calm" class="resource-link" target="_blank">Listen Now →</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

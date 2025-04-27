@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calm Mood</title>
+    <style>
+        /* Global styles */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-image: url('https://wallpapers.com/images/hd/neutral-color-background-1920-x-1080-gnm3dr6coxpbwoci.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+            text-align: center;
+            color: #333;
+            overflow-y: auto;
+        }
+
+        /* Container styling */
+        .container {
+            display: flex;
+            justify-content: space-between;
+            background-color: rgba(255, 255, 255, 0.0);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.0);
+            width: 80%;
+            max-width: 1000px;
+            margin-top: 20px;
+        }
+
+        /* Left side section */
+        .left-side {
+            width: 50%;
+        }
+
+        /* Right side section */
+        .right-side {
+            width: 40%;
+        }
+
+        h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 18px;
+        }
+
+        ul {
+            list-style-type: disc;
+            padding-left: 20px;
+            margin: 20px 0;
+            font-size: 18px;
+            text-align: left;
+        }
+
+        li {
+            margin: 10px 0;
+        }
+
+        /* Square boxes around sections */
+        #feedback, #gratitudeJournal, .activities-box, .saved-entry {
+            border: 2px solid #ddd;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            background-color: #fafafa;
+        }
+
+        /* Button styling */
+        button {
+            padding: 10px 20px;
+            margin: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        /* Textarea styling */
+        textarea {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            margin-bottom: 10px;
+            height: 100px;
+        }
+
+        /* Feedback message */
+        #feedbackMessage, #savedMessage {
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        /* Link styling */
+        a {
+            display: block;
+            margin-top: 20px;
+            color: #4CAF50;
+            text-decoration: underline;
+        }
+
+        /* Saved entries display */
+        .saved-entry {
+            background-color: #fafafa;
+            border: 2px solid #ddd;
+            padding: 10px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+
+        /* Delete button for saved entries */
+        .delete-btn {
+            background-color: #FF6347;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            padding: 5px;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Left side: Activities, Feedback, and Gratitude Journal -->
+        <div class="left-side">
+            <h1>You're Feeling Calm 😌</h1>
+            <p>Here are some activities to maintain your calm state:</p>
+            
+            <!-- Square box for activities -->
+            <div class="activities-box">
+                <ul>
+                    <li>Practice gratitude by listing things you're thankful for.</li>
+                    <li>Engage in a relaxing hobby like painting, reading, or gardening.</li>
+                    <li>Spend time in nature or take a quiet walk.</li>
+                    <li>Listen to soothing music or sounds of nature.</li>
+                </ul>
+            </div>
+
+            <!-- Feedback Section -->
+            <div id="feedback">
+                <p>Did these suggestions help?</p>
+                <button id="yesButton">Yes</button>
+                <button id="noButton">No</button>
+                <p id="feedbackMessage"></p>
+            </div>
+
+            <!-- Gratitude Journal Section -->
+            <div id="gratitudeJournal">
+                <p>Write in below section something you're grateful for:</p>
+                <textarea id="journalEntry" placeholder="Type here..."></textarea>
+                <button id="saveEntry">Save Entry</button>
+                <p id="savedMessage"></p>
+            </div>
+
+            <!-- Link to navigate -->
+            <a href="nextpage.html">Back to Moods</a>
+        </div>
+
+        <!-- Right side: Saved Entries -->
+        <div class="right-side">
+            <h2>Saved Entries</h2>
+            <div id="savedEntriesContainer">
+                <!-- Saved entries will appear here -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Feedback Buttons
+        document.getElementById('yesButton').addEventListener('click', function() {
+            document.getElementById('feedbackMessage').textContent = "We are glad!";
+        });
+
+        document.getElementById('noButton').addEventListener('click', function() {
+            document.getElementById('feedbackMessage').textContent = "Try to write here something you are grateful for.";
+        });
+
+        // Gratitude Journal
+        document.getElementById('saveEntry').addEventListener('click', function() {
+            const entry = document.getElementById('journalEntry').value;
+            if (entry) {
+                // Create a new div for the saved entry
+                const savedEntryDiv = document.createElement('div');
+                savedEntryDiv.classList.add('saved-entry');
+                savedEntryDiv.textContent = entry;
+
+                // Create Delete button
+                const deleteButton = document.createElement('button');
+                deleteButton.textContent = 'Delete';
+                deleteButton.classList.add('delete-btn');
+                deleteButton.addEventListener('click', function() {
+                    savedEntryDiv.remove();
+                });
+
+                // Append button to the saved entry div
+                savedEntryDiv.appendChild(deleteButton);
+
+                // Append the saved entry to the saved entries container
+                document.getElementById('savedEntriesContainer').appendChild(savedEntryDiv);
+
+                // Clear the textarea
+                document.getElementById('journalEntry').value = '';
+
+                // Show the confirmation message
+                document.getElementById('savedMessage').textContent = "Entry saved! Keep practicing gratitude.";
+            } else {
+                document.getElementById('savedMessage').textContent = "Please write something first.";
+            }
+        });
+    </script>
+</body>
+</html>

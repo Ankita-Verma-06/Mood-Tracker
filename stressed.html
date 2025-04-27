@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stressed Mood</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>You're Feeling Stressed 😫</h1>
+        <p>Here are some ways to manage stress:</p>
+        <ul>
+            <li>Take a break and practice deep breathing.</li>
+            <li>Go for a walk or do some light exercise.</li>
+            <li>Listen to calming music or nature sounds.</li>
+            <li>Try a guided meditation or mindfulness exercise.</li>
+        </ul>
+        <div id="feedback">
+            <p>Did these suggestions help?</p>
+            <button id="yesButton">Yes</button>
+            <button id="noButton">No</button>
+            <p id="feedbackMessage"></p>
+        </div>
+        <!-- YouTube Video Section (Initially hidden) -->
+        <div id="youtubeVideos" style="display: none;">
+            <p>Watch this!</p>
+            <!-- Embedding Relaxing Music for Stress Relief -->
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/grfXR6FAsI8" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <br><br>
+            <!-- Embedding Guided Meditation for Beginners -->
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/nusf3ISodRE" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        <div id="meditationTimer">
+            <p>Try a quick meditation:</p>
+            <button id="startTimer">Start 1-Minute Meditation</button>
+            <p id="timerDisplay">1:00</p> <!-- Initial time display -->
+        </div>
+        <a href="nextpage.html">Back to Moods</a>
+    </div>
+
+    <script>
+        // Feedback Buttons
+        document.getElementById('yesButton').addEventListener('click', function() {
+            document.getElementById('feedbackMessage').textContent = "Great! Keep practicing stress-relief techniques. We are glad!";
+            document.getElementById('youtubeVideos').style.display = 'none'; // Hide YouTube videos if yes is clicked
+        });
+
+        document.getElementById('noButton').addEventListener('click', function() {
+            document.getElementById('feedbackMessage').textContent = "No worries. Let's explore other options. It's okay, we are here to help you!";
+            document.getElementById('youtubeVideos').style.display = 'block'; // Show YouTube videos if no is clicked
+        });
+
+        // Meditation Timer
+        let timer;
+        document.getElementById('startTimer').addEventListener('click', function() {
+            let timeLeft = 60; // Set timer for 60 seconds
+            document.getElementById('timerDisplay').textContent = "1:00"; // Set initial display
+            timer = setInterval(() => {
+                timeLeft--; // Decrement time left by 1 second
+                // Update the timer display
+                document.getElementById('timerDisplay').textContent = `0:${timeLeft < 10 ? '0' : ''}${timeLeft}`;
+                if (timeLeft === 0) {
+                    clearInterval(timer); // Clear the timer when it reaches 0
+                    document.getElementById('timerDisplay').textContent = "Time's up! Great job!"; // Show "Time's up" message
+                }
+            }, 1000); // Update every second
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Depressed Mood</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #E6E6FA; /* Lilac color */
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: auto;
+            padding: 20px;
+            background: rgba(205, 179, 230, 0.8); /* Transparent sage green */
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(145, 193, 145, 0.1);
+        }
+
+        h1 {
+            color: #2c3e50;
+        }
+
+        button {
+            background-color: #bba4c0;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px 0;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            color: #3498db;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .quote {
+            font-size: 1.2em;
+            margin: 20px 0;
+        }
+
+        /* Animation for list items */
+        ul {
+            padding-left: 20px;
+        }
+
+        li {
+            opacity: 0; /* Start with invisible */
+            animation: slideIn 1s ease forwards;
+            font-size: 1.5em; /* Increased font size */
+            background-color: #bba4c0; /* Button-like background color */
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            margin: 10px 0;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.1s ease;
+        }
+
+        li:hover {
+            background-color: #a38ba0; /* Lighter background color on hover */
+        }
+
+        li:active {
+            transform: scale(0.98); /* Slightly reduce size when clicked */
+            background-color: #6c3d57; /* Darker background color when clicked */
+        }
+
+        li:nth-child(1) {
+            animation-delay: 0.3s;
+        }
+
+        li:nth-child(2) {
+            animation-delay: 0.6s;
+        }
+
+        li:nth-child(3) {
+            animation-delay: 0.9s;
+        }
+
+        li:nth-child(4) {
+            animation-delay: 1.2s;
+        }
+
+        /* Keyframe animation for sliding in */
+        @keyframes slideIn {
+            0% {
+                transform: translateX(-100%);
+                opacity: 0;
+            }
+            100% {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        .video-message {
+            margin-top: 20px;
+            font-size: 1.2em;
+            color: #2c3e50;
+            display: none; /* Initially hidden */
+        }
+
+        iframe {
+            width: 100%;
+            height: 315px;
+            border: none;
+            margin-top: 20px;
+        }
+
+        .final-message {
+            margin-top: 20px;
+            font-size: 1.5em;
+            color: #2c3e50;
+        }
+
+        #backButton {
+            background-color: #3498db;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            border-radius: 5px;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 20px;
+        }
+
+        #backButton:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>You're Feeling Depressed 😔</h1>
+        <p>Here are some resources and activities to help you feel better:</p>
+        <ul>
+            <li>Reach out to a trusted friend, family member, or therapist.</li>
+            <li>Write down your thoughts and feelings in a journal.</li>
+            <li>Engage in light physical activity, like a short walk.</li>
+            <li>Listen to uplifting music or watch something that makes you smile.</li>
+        </ul>
+
+        <!-- Feedback Section -->
+        <div id="feedback">
+            <p>Did these suggestions help?</p>
+            <button id="yesButton" aria-label="I found the suggestions helpful">Yes</button>
+            <button id="noButton" aria-label="I did not find the suggestions helpful">No</button>
+            <p id="feedbackMessage"></p>
+        </div>
+
+        <!-- Hidden video message -->
+        <div id="videoMessage" style="display: none;">
+            <iframe id="videoFrame" src="" style="display:none"></iframe>
+        </div>
+
+        <!-- Back to Moods button -->
+        <a id="backButton" href="nextpage.html">Back to Moods</a>
+    </div>
+
+    <script>
+        // JavaScript for feedback buttons
+        const yesButton = document.getElementById('yesButton');
+        const noButton = document.getElementById('noButton');
+        const feedbackMessage = document.getElementById('feedbackMessage');
+        const videoMessage = document.getElementById('videoMessage');
+        const videoFrame = document.getElementById('videoFrame');
+
+        // Handling "Yes" button click
+        yesButton.addEventListener('click', function() {
+            feedbackMessage.textContent = "We are glad!";
+            feedbackMessage.style.color = "white";
+            videoMessage.style.display = 'none'; // Hide video if "Yes" clicked
+        });
+
+        // Handling "No" button click
+        noButton.addEventListener('click', function() {
+            feedbackMessage.textContent = "Don't worry ,watch this video";  // No message text (removed "Don't worry, watch this")
+            feedbackMessage.style.color = "white";
+
+            // Show the video message after clicking "No"
+            videoMessage.style.display = 'block';
+
+            // Set the YouTube video URL for motivational content
+            videoFrame.style.display = 'block';
+            videoFrame.src = "https://www.youtube.com/embed/gyQX6bU1NIY?autoplay=1"; // Added autoplay=1 to start the video immediately
+        });
+    </script>
+</body>
+</html>

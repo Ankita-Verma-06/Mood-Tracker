@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Next Step</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #685d72, #8b8a58);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+        }
+
+        .container {
+            background: rgba(193, 178, 178, 0.85);
+            padding: 3rem;
+            border-radius: 45px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            max-width: 830px;
+            width: 100%;
+            animation: fadeIn 2s ease-in-out;
+            backdrop-filter: blur(70px);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: #333;
+        }
+
+        p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            color: #444;
+        }
+
+        .mood-options button {
+            background: #ae73a6;
+            color: rgb(255, 255, 255);
+            border: none;
+            padding: 12px 25px;
+            margin: 8px;
+            border-radius: 12px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: transform 0.3s ease, background 0.3s ease;
+        }
+
+        .mood-options button:hover {
+            background: rgb(102, 37, 102);
+            transform: scale(1.15);
+        }
+
+        #motivationalQuote {
+            margin-top: 30px;
+        }
+
+        #quoteButton {
+            background: #557490;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            font-size: 1.2rem;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: transform 0.3s ease, background 0.3s ease;
+        }
+
+        #quoteButton:hover {
+            background: #94bbe3;
+            transform: scale(1.15);
+        }
+
+        #quoteText {
+            font-style: italic;
+            margin-top: 15px;
+            font-size: 1.3rem;
+            color: #222;
+        }
+
+        a {
+            display: inline-block;
+            margin-top: 25px;
+            text-decoration: none;
+            color: #000000;
+            font-weight: bold;
+            font-size: 1.2rem;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: #ff0040;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1><PRE>HOW ARE YOU FEELING TODAY?</h1></PRE>
+        <p>Select your current mood to explore resources and activities tailored to help you.</p>
+        <div class="mood-options">
+            <button onclick="navigate('happy.html')">😊 Happy</button>
+            <button onclick="navigate('sad.html')">😢 Sad</button>
+            <button onclick="navigate('stressed.html')">😫 Stressed</button>
+            <button onclick="navigate('angry.html')">😠 Angry</button>
+            <button onclick="navigate('calm.html')">😌 Calm</button>
+            <button onclick="navigate('depressed.html')">😔 Depressed</button>
+        </div>
+        <div id="motivationalQuote">
+            <p>Click below for a motivational quote:</p>
+            <button id="quoteButton">Get Quote</button>
+            <p id="quoteText"></p>
+        </div>
+        <a href="index.html">Go Back</a>
+    </div>
+
+    <script>
+        function navigate(page) {
+            window.location.href = page;
+        }
+
+        const quotes = [
+            "You are stronger than you think.",
+            "Every small step counts.",
+            "It's okay to not be okay.",
+            "You are not alone in this.",
+            "Take it one day at a time.",
+            "You matter, and your feelings are valid."
+        ];
+
+        document.getElementById('quoteButton').addEventListener('click', function() {
+            document.getElementById('quoteText').textContent = quotes[Math.floor(Math.random() * quotes.length)];
+        });
+    </script>
+</body>
+</html>
+
+    
