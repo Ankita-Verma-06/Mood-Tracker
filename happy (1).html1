@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Mood</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: 'Lato', sans-serif;
+            background: linear-gradient(to right, rgba(30, 50, 30, 0.9), rgba(45, 60, 45, 0.9));
+            backdrop-filter: blur(10px);
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column; 
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+            overflow-y: auto;
+            animation: fadeIn 1.5s ease-in-out;
+            position: relative;
+        }
+        .logo {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            width: 80px;
+            height: 80px;
+        }
+        .container {
+            max-width: 600px;
+            background: rgba(20, 30, 20, 0.8);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            margin-top: 20px;
+            opacity: 0;
+            animation: popUp 0.5s ease-in-out forwards;
+            transition: transform 0.3s ease-in-out;
+        }
+        .container:hover {
+            transform: scale(1.05);
+        }
+        .suggestion-container {
+            background: rgba(10, 20, 10, 0.9);
+            padding: 20px;
+            border-radius: 15px;
+            margin: 10px auto;
+            transition: transform 0.3s ease-in-out;
+        }
+        .suggestion-container:hover {
+            transform: scale(1.05);
+        }
+        .hidden {
+            display: none;
+        }
+        @keyframes popUp {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        .tic-tac-toe {
+            display: grid;
+            grid-template-columns: repeat(3, 100px);
+            gap: 10px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .cell {
+            width: 100px;
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2em;
+            background: #3b4d3b;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: transform 0.3s ease-in-out;
+        }
+        .cell:hover {
+            transform: scale(1.1);
+        }
+        #winnerMessage {
+            font-size: 1.5em;
+            margin-top: 10px;
+            color: #A8D5BA;
+        }
+        button {
+            font-size: 1.4em;
+            padding: 18px 24px;
+            border-radius: 15px;
+        }
+        <style>
+                /* Add these styles after the existing styles */
+                .scorecard {
+                    background: rgba(30, 50, 30, 0.8);
+                    padding: 15px;
+                    border-radius: 15px;
+                    margin: 15px 0;
+                    display: flex;
+                    justify-content: space-around;
+                }
+                .score {
+                    font-size: 1.2em;
+                    padding: 10px;
+                }
+        <style>
+                /* Add these new styles */
+                .game-layout {
+                    display: flex;
+                    gap: 20px;
+                    align-items: flex-start;
+                    justify-content: center;
+                    width: 100%;
+                }
+                .scorecard-container {
+                    background: white;
+                    color: #333;
+                    padding: 20px;
+                    border-radius: 15px;
+                    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+                    margin-top: 20px;
+                    min-width: 200px;
+                }
+                .score {
+                    font-size: 1.4em;
+                    padding: 15px;
+                    border-bottom: 1px solid #ddd;
+                }
+                .score:last-child {
+                    border-bottom: none;
+                }
+    </style>
+</head>
+<body>
+    <a href="index.html"> <img src="Untitled_design-removebg-preview.png" alt="Panther Logo" class="logo" width="150"> </a>
+    <div class="container" id="mainContainer">
+        <h1>You're Feeling Happy! 😊</h1>
+        <p>Here are some activities to keep the positivity flowing:</p>
+        <div class="suggestion-container">Share your happiness with a friend or loved one.</div>
+        <div class="suggestion-container">Write down what made you happy today in a journal.</div>
+        <div class="suggestion-container">Listen to your favorite upbeat music.</div>
+        <div class="suggestion-container">Go for a walk and enjoy nature.</div>
+        <p>Did these suggestions help?</p>
+        <button id="yesButton">Yes</button>
+        <button id="noButton">No</button>
+        <p id="feedbackMessage"></p>
+    </div>
+    
+    <div class="container hidden" id="gamePrompt">
+        <h1>Let's play a game</h1>
+        <button id="nextButton">Next</button>
+        <button onclick="showMainContainer()">Back</button>
+    </div>
+
+    <div class="container hidden" id="ticTacToeGame">
+        <div id="gameIntro">
+            <h1>Welcome to Tic-Tac-Toe!</h1>
+            <div class="game-intro">
+                <h2>How to Play:</h2>
+                <ul class="instruction-list">
+                    <li>You will play as X and the computer will play as O</li>
+                    <li>Players take turns placing their marks in empty squares</li>
+                    <li>The first player to get 3 of their marks in a row (up, down, across, or diagonally) wins</li>
+                    <li>When all 9 squares are full, the game is over</li>
+                </ul>
+                <button id="startGameButton">Start Game</button>
+                <button onclick="showGamePrompt()">Back</button>
+            </div>
+        </div>
+        <div id="gameContent" class="hidden">
+            <h1>Tic-Tac-Toe</h1>
+            <div class="game-layout">
+                <div class="scorecard-container">
+                    <h2>Score Board</h2>
+                    <div class="score">Player (X): <span id="playerScore">0</span></div>
+                    <div class="score">AI (O): <span id="aiScore">0</span></div>
+                </div>
+                <div>
+                    <div class="tic-tac-toe" id="board"></div>
+                    <p id="winnerMessage"></p>
+                    <button id="restartButton" class="hidden">Restart</button>
+                    <button onclick="showGameIntro()">Back</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        // Add these functions at the start of your script section
+        function showMainContainer() {
+            document.getElementById('gamePrompt').classList.add('hidden');
+            document.getElementById('mainContainer').classList.remove('hidden');
+        }
+
+        function showGamePrompt() {
+            document.getElementById('ticTacToeGame').classList.add('hidden');
+            document.getElementById('gamePrompt').classList.remove('hidden');
+        }
+
+        function showGameIntro() {
+            document.getElementById('gameContent').classList.add('hidden');
+            document.getElementById('gameIntro').classList.remove('hidden');
+        }
+        document.getElementById('yesButton').addEventListener('click', function() {
+            document.getElementById('feedbackMessage').textContent = "Great! Keep spreading positivity!";
+        });
+
+        document.getElementById('noButton').addEventListener('click', function() {
+            document.getElementById('mainContainer').classList.add('hidden');
+            document.getElementById('gamePrompt').classList.remove('hidden');
+        });
+
+        document.getElementById('nextButton').addEventListener('click', function() {
+            document.getElementById('gamePrompt').classList.add('hidden');
+            document.getElementById('ticTacToeGame').classList.remove('hidden');
+        });
+
+        document.getElementById('startGameButton').addEventListener('click', function() {
+            document.getElementById('gameIntro').classList.add('hidden');
+            document.getElementById('gameContent').classList.remove('hidden');
+            startTicTacToe();
+        });
+
+        function startTicTacToe() {
+            const board = document.getElementById('board');
+            board.innerHTML = '';
+            let currentPlayer = 'X';
+            let cells = Array(9).fill(null);
+            let playerScore = parseInt(document.getElementById('playerScore')?.textContent || 0);
+            let aiScore = parseInt(document.getElementById('aiScore')?.textContent || 0);
+
+            function updateScore(winner) {
+                if (winner === 'X') {
+                    playerScore++;
+                    document.getElementById('playerScore').textContent = playerScore;
+                } else if (winner === 'O') {
+                    aiScore++;
+                    document.getElementById('aiScore').textContent = aiScore;
+                }
+            }
+
+            function checkWinner() {
+                const winPatterns = [
+                    [0, 1, 2], [3, 4, 5], [6, 7, 8],
+                    [0, 3, 6], [1, 4, 7], [2, 5, 8],
+                    [0, 4, 8], [2, 4, 6]
+                ];
+                for (let pattern of winPatterns) {
+                    const [a, b, c] = pattern;
+                    if (cells[a] && cells[a] === cells[b] && cells[a] === cells[c]) {
+                        document.getElementById('winnerMessage').textContent = `${cells[a]} Wins!`;
+                        document.getElementById('restartButton').classList.remove('hidden');
+                        updateScore(cells[a]);
+                        return true;
+                    }
+                }
+                // Check for tie
+                if (!cells.includes(null)) {
+                    document.getElementById('winnerMessage').textContent = "It's a tie!";
+                    document.getElementById('restartButton').classList.remove('hidden');
+                    return true;
+                }
+                return false;
+            }
+
+            // Add restart button functionality
+            document.getElementById('restartButton').addEventListener('click', function() {
+                document.getElementById('restartButton').classList.add('hidden');
+                document.getElementById('winnerMessage').textContent = '';
+                startTicTacToe();
+            });
+            function aiMove() {
+                let emptyCells = cells.map((val, idx) => val === null ? idx : null).filter(val => val !== null);
+                if (emptyCells.length > 0) {
+                    let move = emptyCells[Math.floor(Math.random() * emptyCells.length)];
+                    cells[move] = 'O';
+                    board.children[move].textContent = 'O';
+                    checkWinner();
+                }
+            }
+
+            for (let i = 0; i < 9; i++) {
+                const cell = document.createElement('div');
+                cell.classList.add('cell');
+                cell.addEventListener('click', function() {
+                    if (!cells[i] && !checkWinner()) {
+                        cells[i] = 'X';
+                        cell.textContent = 'X';
+                        if (!checkWinner()) setTimeout(aiMove, 500);
+                    }
+                });
+                board.appendChild(cell);
+            }
+        }
+    </script>
+</body>
+</html>
